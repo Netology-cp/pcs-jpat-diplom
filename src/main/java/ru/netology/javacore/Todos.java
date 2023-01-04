@@ -13,7 +13,6 @@ public class Todos {
             stack.add(actual.stream().collect(Collectors.toList()));
             actual.add(task);
         }
-        getAllTasks();
     }
 
     public void removeTask(String task) {
@@ -22,7 +21,6 @@ public class Todos {
             stack.add(actual.stream().collect(Collectors.toList()));
             actual.remove(task);
         }
-        getAllTasks();
     }
 
     public String getAllTasks() {
@@ -39,6 +37,5 @@ public class Todos {
 
     public void restoreTask() {
         actual = stack.pollLast();
-        getAllTasks();
     }
 }
