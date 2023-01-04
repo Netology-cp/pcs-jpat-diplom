@@ -8,7 +8,7 @@ public class Todos {
     private List<String> actual = new LinkedList<>();
 
     public void addTask(String task) {
-        if (actual.size() < 8) {
+        if (actual.size() < 7) {
             // Перед выполнением действия сохраняем текущее состояние в стек
             stack.add(actual.stream().collect(Collectors.toList()));
             actual.add(task);
