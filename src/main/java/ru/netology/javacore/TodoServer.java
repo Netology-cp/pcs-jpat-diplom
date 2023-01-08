@@ -23,7 +23,10 @@ public class TodoServer {
         System.out.println("Starting server at " + port + "...");
         try (ServerSocket serverSocket = new ServerSocket(port);) { // стартуем сервер один(!) раз
             while (true) { // в цикле(!) принимаем подключения
-                try (Socket socket = serverSocket.accept(); BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream())); PrintWriter out = new PrintWriter(socket.getOutputStream());) {
+                try (Socket socket = serverSocket.accept();
+                     BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                     PrintWriter out = new PrintWriter(socket.getOutputStream());)
+                {
                     String request = in.readLine();
                     Command command = gson.fromJson(request, Command.class);
                     switch (command.type) {
