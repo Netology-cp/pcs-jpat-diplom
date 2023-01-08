@@ -10,7 +10,7 @@ public class Todos {
     public void addTask(String task) {
         if (actual.size() < MAX_AMOUNT_OF_TASKS) {
             // Перед выполнением действия сохраняем текущее состояние в стек
-            stack.add(new ArrayList<>(actual));
+            stack.add(new LinkedList<>(actual));
             actual.add(task);
         }
     }
@@ -18,7 +18,7 @@ public class Todos {
     public void removeTask(String task) {
         if (actual.contains(task)) {
             // Перед выполнением действия сохраняем текущее состояние в стек
-            stack.add(new ArrayList<>(actual));
+            stack.add(new LinkedList<>(actual));
             actual.remove(task);
         }
     }
