@@ -1,16 +1,16 @@
 package ru.netology.javacore;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Todos {
-    private Deque<List<String>> stack = new LinkedList<>();
+    private static final int MAX_AMOUNT_OF_TASKS = 7;
+    private final Deque<List<String>> stack = new LinkedList<>();
     private List<String> actual = new LinkedList<>();
 
     public void addTask(String task) {
-        if (actual.size() < 8) {
+        if (actual.size() < MAX_AMOUNT_OF_TASKS) {
             // Перед выполнением действия сохраняем текущее состояние в стек
-            stack.add(actual.stream().collect(Collectors.toList()));
+            stack.add(new ArrayList<>(actual));
             actual.add(task);
         }
     }
@@ -18,12 +18,13 @@ public class Todos {
     public void removeTask(String task) {
         if (actual.contains(task)) {
             // Перед выполнением действия сохраняем текущее состояние в стек
-            stack.add(actual.stream().collect(Collectors.toList()));
+            stack.add(new ArrayList<>(actual));
             actual.remove(task);
         }
     }
 
     public String getAllTasks() {
+        Collections.sort(actual); // сортировка в алфавитном порядке
         StringBuilder stringBuilder = new StringBuilder();
         for (String item : actual) {
             if ((stringBuilder.toString().equals(""))) {
