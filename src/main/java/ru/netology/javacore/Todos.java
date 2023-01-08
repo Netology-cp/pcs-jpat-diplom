@@ -8,11 +8,7 @@ public class Todos {
     private List<String> actual = new LinkedList<>();
 
     public void addTask(String task) {
-<<<<<<< HEAD
         if (actual.size() < MAX_AMOUNT_OF_TASKS) {
-=======
-        if (actual.size() < 7) {
->>>>>>> 50b568a40a96280ca2361f54ddcf749c4fa21622
             // Перед выполнением действия сохраняем текущее состояние в стек
             stack.add(new ArrayList<>(actual));
             actual.add(task);
